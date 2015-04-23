@@ -81,4 +81,9 @@ public class MainActivity extends ActionBarActivity {
         // mNotificationId allows you to update the notification later on.
         mNotificationManager.notify(mNotificationId, mBuilder.build());
     }
+
+    public void goToSecond(View view) {
+        Intent goToSecondIntent = new Intent(this, SecondActivity.class);
+        startActivity(goToSecondIntent);
+    }
 }
