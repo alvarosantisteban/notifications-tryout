@@ -54,10 +54,27 @@ public class MainActivity extends ActionBarActivity {
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
                         .setSmallIcon(R.mipmap.ic_launcher)
-                        .setContentTitle("Titulo notificacion")
-                        .setContentText("Texto de la notificacion super importante")
+                        .setContentTitle(getString(R.string.notification_title))
+                        .setContentText(getString(R.string.notification_text))
                         .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                         .setAutoCancel(true);
+
+        // Expanded layout of notification
+        NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
+        String[] events = new String[4];
+        events[0] = getString(R.string.notification_first_line);
+        events[1] = getString(R.string.notification_second_line);
+        events[2] = getString(R.string.notification_third_line);
+        events[3] = getString(R.string.notification_forth_line);
+        // Sets a title for the Inbox in expanded layout
+        inboxStyle.setBigContentTitle(getString(R.string.notification_expanded_title));
+        // Moves events into the expanded layout
+        for (int i = 0; i < events.length; i++) {
+            inboxStyle.addLine(events[i]);
+        }
+        // Moves the expanded layout object into the notification object.
+        mBuilder.setStyle(inboxStyle);
+
         // Creates an explicit intent for an Activity in your app
         Intent resultIntent = new Intent(this, MainActivity.class);
         Intent resultIntent2 = new Intent(this, SecondActivity.class);
@@ -71,10 +88,9 @@ public class MainActivity extends ActionBarActivity {
         // Adds the back stack for the Intent (but not the Intent itself)
         stackBuilder.addParentStack(MainActivity.class);
         // Adds the Intent that starts the Activity to the top of the stack
-        //stackBuilder.addNextIntent(resultIntent2);
-        stackBuilder.addNextIntent(resultIntent3);
+        //stackBuilder.addNextIntent(resultIntent3);
         stackBuilder.addNextIntent(resultIntent);
-        stackBuilder.addNextIntent(resultIntent2);
+        //stackBuilder.addNextIntent(resultIntent2);
         PendingIntent resultPendingIntent =
                 stackBuilder.getPendingIntent(
                         0,
