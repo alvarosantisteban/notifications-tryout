@@ -60,6 +60,8 @@ public class MainActivity extends ActionBarActivity {
                         .setAutoCancel(true);
         // Creates an explicit intent for an Activity in your app
         Intent resultIntent = new Intent(this, MainActivity.class);
+        Intent resultIntent2 = new Intent(this, SecondActivity.class);
+        Intent resultIntent3 = new Intent(this, ThirdActivity.class);
 
         // The stack builder object will contain an artificial back stack for the
         // started Activity.
@@ -69,7 +71,10 @@ public class MainActivity extends ActionBarActivity {
         // Adds the back stack for the Intent (but not the Intent itself)
         stackBuilder.addParentStack(MainActivity.class);
         // Adds the Intent that starts the Activity to the top of the stack
+        //stackBuilder.addNextIntent(resultIntent2);
+        stackBuilder.addNextIntent(resultIntent3);
         stackBuilder.addNextIntent(resultIntent);
+        stackBuilder.addNextIntent(resultIntent2);
         PendingIntent resultPendingIntent =
                 stackBuilder.getPendingIntent(
                         0,
