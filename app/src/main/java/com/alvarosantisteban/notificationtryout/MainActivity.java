@@ -15,6 +15,7 @@ import android.view.View;
 public class MainActivity extends ActionBarActivity {
 
     private int mNotificationId = 7;
+    private int mNumNotifications;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,7 @@ public class MainActivity extends ActionBarActivity {
                         .setSmallIcon(R.mipmap.ic_launcher)
                         .setContentTitle(getString(R.string.notification_title))
                         .setContentText(getString(R.string.notification_text))
+                        .setNumber(++mNumNotifications)
                         .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                         .setAutoCancel(true);
 
